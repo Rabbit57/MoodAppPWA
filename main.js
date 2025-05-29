@@ -12,6 +12,28 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+let deferredPrompt;
+const installBtn = document.getElementById('install-button');
+window.addEventListener('beforeinstallprompt', event => {
+  event.preventDefault();
+  deferredPrompt = event;
+  if (installBtn) {
+    installBtn.hidden = false;
+  }
+});
+if (installBtn) {
+  installBtn.addEventListener('click', () => {
+    installBtn.hidden = true;
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choiceResult => {
+        console.log(`User ${choiceResult.outcome} the install prompt`);
+        deferredPrompt = null;
+      });
+    }
+  });
+}
+
 // IndexedDB helper functions
 function openDB() {
   return new Promise((resolve, reject) => {

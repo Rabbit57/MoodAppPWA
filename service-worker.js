@@ -5,7 +5,10 @@ const ASSETS = [
   '.',
   'index.html',
   'manifest.json',
-  'main.js'
+  'main.js',
+  'service-worker.js',
+  'https://via.placeholder.com/192.png?text=Mood',
+  'https://via.placeholder.com/512.png?text=Mood'
 ];
 
 // IndexedDB helper functions

@@ -1,7 +1,7 @@
 {
   "name": "Mood Tracker PWA",
   "short_name": "MoodTracker",
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3f51b5",
