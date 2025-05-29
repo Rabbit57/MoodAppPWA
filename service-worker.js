@@ -2,13 +2,12 @@
 
 const CACHE_NAME = 'mood-pwa-cache-v1';
 const ASSETS = [
-  '.',
-  'index.html',
-  'manifest.json',
-  'main.js',
-  'service-worker.js',
-  'https://via.placeholder.com/192.png?text=Mood',
-  'https://via.placeholder.com/512.png?text=Mood'
+  './',
+  './index.html',
+  './manifest.json',
+  './main.js',
+  './icons/icon.128.png',
+  './icons/icon.512.png'
 ];
 
 // IndexedDB helper functions
@@ -74,6 +73,9 @@ self.addEventListener('install', event => {
       .open(CACHE_NAME)
       .then(cache => cache.addAll(ASSETS))
       .then(() => self.skipWaiting())
+      .catch(error => {
+        console.error('Service worker installation failed:', error);
+      })
   );
 });
 
